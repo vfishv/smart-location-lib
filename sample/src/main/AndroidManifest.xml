@@ -8,6 +8,7 @@
         android:label="SmartLocation Sample">
 
         <activity
+            android:exported="true"
             android:name="io.nlopez.smartlocation.sample.MainActivity"
             android:label="SmartLocation Sample"
             android:screenOrientation="portrait">
