@@ -20,8 +20,8 @@ dependencies {
         maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
     }
     compile project(':library')
-    compile 'io.reactivex.rxjava2:rxjava:2.1.5'
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'io.reactivex.rxjava2:rxjava:2.2.21'
+    compile 'io.reactivex.rxjava2:rxandroid:2.1.1'
     testCompile "junit:junit:$junitVersion"
     testCompile "org.robolectric:robolectric:$robolectricVersion"
     testCompile "org.robolectric:robolectric-shadows:$robolectricVersion"
@@ -30,7 +30,7 @@ dependencies {
 
 android {
     compileSdkVersion 31
-    buildToolsVersion '31.0.0'
+    //buildToolsVersion '31.0.0'
 
     buildTypes {
         defaultConfig {
