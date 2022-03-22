@@ -40,6 +40,7 @@ public class MainActivity extends Activity implements OnLocationUpdatedListener,
     private LocationGooglePlayServicesProvider provider;
 
     private static final int LOCATION_PERMISSION_ID = 1001;
+    private static final int RECOGNITION_PERMISSION_ID = 1002;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -53,7 +54,11 @@ public class MainActivity extends Activity implements OnLocationUpdatedListener,
             public void onClick(View view) {
                 // Location permission not granted
                 if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_ID);
+                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACTIVITY_RECOGNITION}, LOCATION_PERMISSION_ID);
+                    return;
+                }
+                if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACTIVITY_RECOGNITION) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACTIVITY_RECOGNITION}, RECOGNITION_PERMISSION_ID);
                     return;
                 }
                 startLocation();
@@ -81,9 +86,17 @@ public class MainActivity extends Activity implements OnLocationUpdatedListener,
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == LOCATION_PERMISSION_ID || requestCode == RECOGNITION_PERMISSION_ID) {
+            if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACTIVITY_RECOGNITION) == PackageManager.PERMISSION_GRANTED
+                    || ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACTIVITY_RECOGNITION) == PackageManager.PERMISSION_GRANTED) {
+                startLocation();
+            }
+        }
+        /*
         if (requestCode == LOCATION_PERMISSION_ID && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             startLocation();
         }
+        */
     }
 
     private void showLast() {
