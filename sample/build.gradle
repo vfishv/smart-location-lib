@@ -7,7 +7,7 @@ android {
     defaultConfig {
         applicationId "io.nlopez.smartlocation"
         minSdkVersion 14
-        targetSdkVersion 30
+        targetSdkVersion 28
         versionCode 100
         versionName "1.0.0"
     }
@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-    compile project(':library')
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:2.8.1'
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    implementation project(':library')
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.8.1'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 }
