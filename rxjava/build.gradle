@@ -5,7 +5,7 @@ buildscript {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'maven-publish'
+//apply plugin: 'maven-publish'
 apply plugin: 'maven'
 apply plugin: 'signing'
 
@@ -16,7 +16,7 @@ group 'io.nlopez.smartlocation'
 dependencies {
     repositories {
         mavenCentral()
-        maven { url "https://maven.google.com" }
+        google()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
     }
     compile project(':library')
@@ -29,8 +29,8 @@ dependencies {
 }
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 31
+    buildToolsVersion '31.0.0'
 
     buildTypes {
         defaultConfig {
@@ -48,6 +48,7 @@ android {
 
 }
 
+/*
 android.libraryVariants
 publishing {
     publications {
@@ -116,3 +117,4 @@ uploadArchives {
         }
     }
 }
+*/
