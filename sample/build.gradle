@@ -21,5 +21,5 @@ repositories {
 dependencies {
     implementation project(':library')
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.8.1'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:2.8.1'
 }

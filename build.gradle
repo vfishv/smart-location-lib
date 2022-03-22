@@ -4,8 +4,8 @@ buildscript {
     ext.smartLocationVersion = "3.3.3"
 
     // Common dependencies
-    ext.robolectricVersion = "3.1"
-    ext.mockitoVersion = "2.0.86-beta"
+    ext.robolectricVersion = "4.2.1"
+    ext.mockitoVersion = "2.23.4"
     ext.junitVersion = "4.13.2"
 
     repositories {
