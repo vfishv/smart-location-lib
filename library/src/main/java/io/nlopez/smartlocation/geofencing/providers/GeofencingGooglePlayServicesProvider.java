@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -82,9 +83,12 @@ public class GeofencingGooglePlayServicesProvider implements GeofencingProvider,
                 .build();
 
         client.connect();
-
+        int flags = PendingIntent.FLAG_UPDATE_CURRENT;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            flags = PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE;
+        }
         pendingIntent = PendingIntent.getService(context, 0, new Intent(context, GeofencingService.class),
-                PendingIntent.FLAG_UPDATE_CURRENT);
+                flags);
     }
 
     @Override

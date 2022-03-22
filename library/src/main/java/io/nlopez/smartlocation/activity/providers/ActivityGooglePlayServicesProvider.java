@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.IntentSender;
+import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 
@@ -99,8 +100,12 @@ public class ActivityGooglePlayServicesProvider implements ActivityProvider, Goo
     private void startUpdating(ActivityParams params) {
         // TODO wait until the connection is done and retry
         if (client.isConnected()) {
+            int flags = PendingIntent.FLAG_UPDATE_CURRENT;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                flags = PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE;
+            }
             pendingIntent = PendingIntent.getService(context, 0, new Intent(context, ActivityRecognitionService.class),
-                                                     PendingIntent.FLAG_UPDATE_CURRENT);
+                    flags);
             ActivityRecognition.ActivityRecognitionApi.requestActivityUpdates(client, params.getInterval(),
                                                                               pendingIntent).setResultCallback(this);
         }
