@@ -26,6 +26,7 @@ import io.nlopez.smartlocation.activity.ActivityStore;
 import io.nlopez.smartlocation.activity.config.ActivityParams;
 import io.nlopez.smartlocation.utils.GooglePlayServicesListener;
 import io.nlopez.smartlocation.utils.Logger;
+import io.nlopez.smartlocation.utils.Utility;
 
 /**
  * Created by mrm on 3/1/15.
@@ -83,7 +84,7 @@ public class ActivityGooglePlayServicesProvider implements ActivityProvider, Goo
         this.listener = listener;
 
         IntentFilter intentFilter = new IntentFilter(BROADCAST_INTENT_ACTION);
-        context.registerReceiver(activityReceiver, intentFilter);
+        Utility.registerReceiver(context, activityReceiver, intentFilter);
 
         if (client.isConnected()) {
             startUpdating(params);

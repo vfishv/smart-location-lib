@@ -34,6 +34,7 @@ import io.nlopez.smartlocation.geofencing.model.GeofenceModel;
 import io.nlopez.smartlocation.geofencing.utils.TransitionGeofence;
 import io.nlopez.smartlocation.utils.GooglePlayServicesListener;
 import io.nlopez.smartlocation.utils.Logger;
+import io.nlopez.smartlocation.utils.Utility;
 
 /**
  * Created by mrm on 3/1/15.
@@ -161,7 +162,7 @@ public class GeofencingGooglePlayServicesProvider implements GeofencingProvider,
         this.listener = listener;
 
         IntentFilter intentFilter = new IntentFilter(BROADCAST_INTENT_ACTION);
-        context.registerReceiver(geofencingReceiver, intentFilter);
+        Utility.registerReceiver(context, geofencingReceiver, intentFilter);
 
         if (!client.isConnected()) {
             logger.d("still not connected - scheduled start when connection is ok");

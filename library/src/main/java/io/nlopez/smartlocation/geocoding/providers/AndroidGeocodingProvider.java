@@ -20,6 +20,7 @@ import io.nlopez.smartlocation.OnReverseGeocodingListener;
 import io.nlopez.smartlocation.geocoding.GeocodingProvider;
 import io.nlopez.smartlocation.geocoding.utils.LocationAddress;
 import io.nlopez.smartlocation.utils.Logger;
+import io.nlopez.smartlocation.utils.Utility;
 
 /**
  * Geocoding provider based on Android's Geocoder class.
@@ -92,11 +93,11 @@ public class AndroidGeocodingProvider implements GeocodingProvider {
             final Intent serviceIntent = new Intent(context, AndroidGeocodingService.class);
             serviceIntent.putExtra(LOCALE_ID, locale);
             if (!fromNameList.isEmpty()) {
-                context.registerReceiver(directReceiver, directFilter);
+                Utility.registerReceiver(context, directReceiver, directFilter);
                 serviceIntent.putExtra(DIRECT_GEOCODING_ID, fromNameList);
             }
             if (!fromLocationList.isEmpty()) {
-                context.registerReceiver(reverseReceiver, reverseFilter);
+                Utility.registerReceiver(context, reverseReceiver, reverseFilter);
                 serviceIntent.putExtra(REVERSE_GEOCODING_ID, fromLocationList);
             }
             context.startService(serviceIntent);
