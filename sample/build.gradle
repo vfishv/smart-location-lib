@@ -1,8 +1,9 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 32
-    //buildToolsVersion '32.0.0'
+    compileSdkVersion 34
+    //buildToolsVersion '34.0.0'
+    namespace "io.nlopez.smartlocation"
 
     defaultConfig {
         applicationId "io.nlopez.smartlocation"
@@ -20,6 +21,6 @@ repositories {
 
 dependencies {
     implementation project(':library')
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.8.1'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:2.8.1'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.12'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:2.12'
 }
